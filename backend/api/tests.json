@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Get dashboard data",
+      "method": "GET",
+      "path": "/?action=dashboard",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Get meals",
+      "method": "GET",
+      "path": "/?action=meals",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Add meal",
+      "method": "POST",
+      "path": "/?action=meal",
+      "body": {
+        "meal_type": "breakfast",
+        "name": "Test meal",
+        "calories": 300,
+        "protein": 20,
+        "fats": 10,
+        "carbs": 30
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "message": "Meal added"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
